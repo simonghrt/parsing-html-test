@@ -1,4 +1,4 @@
-# Fox intelligence test
+# Parsing html test
 
 This project aims to parse an HTML file and get the main informations written in this file
 
