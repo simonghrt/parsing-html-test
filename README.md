@@ -15,3 +15,8 @@ npm install
 ```
 npm start
 ```
+
+### Todos
+
+* Add tests
+* Make verifications about inputs when parsing
