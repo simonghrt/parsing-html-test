@@ -1,0 +1,97 @@
+{
+  "status": "ok",
+  "result": {
+    "trips": [
+      {
+        "details": {
+          "roundTrips": [
+            {
+              "type": " Aller ",
+              "date": "Fri Sep 02 2016 00:00:00 GMT+0200",
+              "trains": [
+                {
+                  "departureTime": " 16h57 ",
+                  "departureStation": " PARIS GARE DE LYON ",
+                  "arrivalTime": " 18h56 ",
+                  "arrivalStation": " LYON PART DIEU ",
+                  "type": " TGV ",
+                  "number": " 6687 "
+                }
+              ]
+            },
+            {
+              "type": " Retour ",
+              "date": "Sun Sep 04 2016 00:00:00 GMT+0200",
+              "trains": [
+                {
+                  "departureTime": " 13h05 ",
+                  "departureStation": " LYON PART DIEU ",
+                  "arrivalTime": " 15h01 ",
+                  "arrivalStation": " PARIS GARE DE LYON ",
+                  "type": " TGV ",
+                  "number": " 6618 "
+                }
+              ]
+            },
+            {
+              "type": " Aller ",
+              "date": "Thu Sep 15 2016 00:00:00 GMT+0200",
+              "trains": [
+                {
+                  "departureTime": " 16h37 ",
+                  "departureStation": " PARIS GARE DE LYON ",
+                  "arrivalTime": " 19h17 ",
+                  "arrivalStation": " AVIGNON TGV ",
+                  "type": " TGV ",
+                  "number": " 6121 "
+                }
+              ]
+            },
+            {
+              "type": " Retour ",
+              "date": "Sun Sep 18 2016 00:00:00 GMT+0200",
+              "trains": [
+                {
+                  "departureTime": " 15h42 ",
+                  "departureStation": " AVIGNON TGV ",
+                  "arrivalTime": " 18h30 ",
+                  "arrivalStation": " PARIS GARE DE LYON ",
+                  "type": " TGV ",
+                  "number": " 6122 "
+                }
+              ],
+              "passengers": [
+                {
+                  "age": "(26 à 59 ans)",
+                  "type": "échangeable"
+                },
+                {
+                  "age": "(26 à 59 ans)",
+                  "type": "échangeable"
+                },
+                {
+                  "age": "(4 à 11 ans)",
+                  "type": "échangeable"
+                },
+                {
+                  "age": "(0 à 3 ans)",
+                  "type": "échangeable"
+                }
+              ]
+            }
+          ],
+          "price": " 768,50 € "
+        },
+        "code": " SNIKXP ",
+        "name": " dupont "
+      }
+    ],
+    "custom": {
+      "prices": [
+        " 315,50 € ",
+        " 378,00 € ",
+        " 75,00 €   "
+      ]
+    }
+  }
+}
