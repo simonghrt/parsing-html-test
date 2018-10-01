@@ -12,6 +12,7 @@ const cheerio = require('cheerio');
 // We set the moment locale variable
 moment.locale('fr');
 
+
 /**
  *  Inits the JSON object
  *  @returns {object} JSON object created with multiple instantiations
@@ -30,6 +31,18 @@ function initJson() {
 
 
 /**
+ *  Converts a price string to a number
+ *  @param{string} Price to convert
+ *  @returns{number} Number converted
+ */
+function priceToNumber(price) {
+  price = price.replace(/[^0-9,.-]+/g,"");
+  price = price.replace(/,/g, ".");
+  return Number(price);
+}
+
+
+/**
  *  Parses informations about trips
  *  @param {string} Date of the trip
  *  @param {object} Details about the trip
@@ -44,15 +57,15 @@ function parseRoundTrip(date, details) {
   });
   
   let result = {};
-  result["type"] = detailsHtml(".travel-way").text();
+  result["type"] = detailsHtml(".travel-way").text().trim();
   result["date"] = dateFormat.toString();
   result["trains"] = [];
   let train = {};
-  train["departureTime"] = detailsHtml(".origin-destination-hour.segment-departure").text();
-  train["departureStation"] = detailsHtml(".origin-destination-station.segment-departure").text();
-  train["arrivalTime"] = detailsHtml(".origin-destination-hour.segment-arrival").text();
-  train["arrivalStation"] = detailsHtml(".origin-destination-station.segment-arrival").text();
-  let addDetails = detailsHtml(".segment").toArray().map((x) => {return detailsHtml(x).text()});
+  train["departureTime"] = detailsHtml(".origin-destination-hour.segment-departure").text().trim();
+  train["departureStation"] = detailsHtml(".origin-destination-station.segment-departure").text().trim();
+  train["arrivalTime"] = detailsHtml(".origin-destination-hour.segment-arrival").text().trim();
+  train["arrivalStation"] = detailsHtml(".origin-destination-station.segment-arrival").text().trim();
+  let addDetails = detailsHtml(".segment").toArray().map((x) => {return detailsHtml(x).text().trim()});
   train["type"] = addDetails[0];
   train["number"] = addDetails[1];
   result["trains"].push(train);
@@ -68,13 +81,15 @@ function parseRoundTrip(date, details) {
  */
 function parsePassengers(html) {
   let pass = html(".passengers").toArray().map((x) => {return html(x).html()});
+
   const passengersHtml = cheerio.load(pass[0], {
     normalizeWhitespace: true,
     xmlMode: true  
   });
+
   let passengers = [];
-  let passengerAges = passengersHtml(".typology").toArray().map((x) => {return passengersHtml(x).text()});
-  let passengerTypes = passengersHtml(".fare-details").toArray().map((x) => {return passengersHtml(x).text()});
+  let passengerAges = passengersHtml(".typology").toArray().map((x) => {return passengersHtml(x).text().trim()});
+  let passengerTypes = passengersHtml(".fare-details").toArray().map((x) => {return passengersHtml(x).text().trim()});
   let regexAge = /\(([^()]+)\)/g;
   for (let i = 0; i < passengerAges.length; i++) {
     let passenger = {};
@@ -89,6 +104,7 @@ function parsePassengers(html) {
   return passengers;
 }
 
+
 /**
  *  Parses the main html content
  *  @param{object} Object with HTML content created by Cheerio
@@ -98,14 +114,14 @@ function parseHtml(html) {
   let json_result = initJson();
 
   // Status
-  if (html("#intro-title").text().includes("Confirmation")) {
+  if (html("#intro-title").text().trim().includes("Confirmation")) {
     json_result["status"] = "ok";
   } else {
     json_result["status"] = "error";
   }
 
   // Total price
-  json_result["result"]["trips"][0]["details"]["price"] = html(".total-amount .very-important").text();
+  json_result["result"]["trips"][0]["details"]["price"] = priceToNumber(html(".total-amount .very-important").text().trim());
   
   // Trips
   let tripsDate = html(".product-travel-date").toArray().map((x) => {return html(x).html()});
@@ -120,10 +136,12 @@ function parseHtml(html) {
   // Prices
   json_result["result"]["custom"] = {};
   json_result["result"]["custom"]["prices"] = [];
-  let cellPrices = html(".product-header .cell, .product-header .amount").toArray().map((x) => {return html(x).text()});
+  let cellPrices = html(".product-header .cell, .product-header .amount").toArray().map((x) => {return html(x).text().trim()});
   cellPrices.forEach((price) => {
     if (price.includes("€")) {
-      json_result["result"]["custom"]["prices"].push(price);
+      let priceJson = {};
+      priceJson["value"] = priceToNumber(price);
+      json_result["result"]["custom"]["prices"].push(priceJson);
     }
   });
 
@@ -135,8 +153,8 @@ function parseHtml(html) {
         normalizeWhitespace: true,
         xmlMode: true  
       });
-      json_result["result"]["trips"][0]["code"] = pnrHtml(".pnr-ref .pnr-info").text();
-      json_result["result"]["trips"][0]["name"] = pnrHtml(".pnr-name .pnr-info").text();
+      json_result["result"]["trips"][0]["code"] = pnrHtml(".pnr-ref .pnr-info").text().trim();
+      json_result["result"]["trips"][0]["name"] = pnrHtml(".pnr-name .pnr-info").text().trim();
     }
   });
 

@@ -5,58 +5,58 @@
         "details": {
           "roundTrips": [
             {
-              "type": " Aller ",
+              "type": "Aller",
               "date": "Fri Sep 02 2016 00:00:00 GMT+0200",
               "trains": [
                 {
-                  "departureTime": " 16h57 ",
-                  "departureStation": " PARIS GARE DE LYON ",
-                  "arrivalTime": " 18h56 ",
-                  "arrivalStation": " LYON PART DIEU ",
-                  "type": " TGV ",
-                  "number": " 6687 "
+                  "departureTime": "16h57",
+                  "departureStation": "PARIS GARE DE LYON",
+                  "arrivalTime": "18h56",
+                  "arrivalStation": "LYON PART DIEU",
+                  "type": "TGV",
+                  "number": "6687"
                 }
               ]
             },
             {
-              "type": " Retour ",
+              "type": "Retour",
               "date": "Sun Sep 04 2016 00:00:00 GMT+0200",
               "trains": [
                 {
-                  "departureTime": " 13h05 ",
-                  "departureStation": " LYON PART DIEU ",
-                  "arrivalTime": " 15h01 ",
-                  "arrivalStation": " PARIS GARE DE LYON ",
-                  "type": " TGV ",
-                  "number": " 6618 "
+                  "departureTime": "13h05",
+                  "departureStation": "LYON PART DIEU",
+                  "arrivalTime": "15h01",
+                  "arrivalStation": "PARIS GARE DE LYON",
+                  "type": "TGV",
+                  "number": "6618"
                 }
               ]
             },
             {
-              "type": " Aller ",
+              "type": "Aller",
               "date": "Thu Sep 15 2016 00:00:00 GMT+0200",
               "trains": [
                 {
-                  "departureTime": " 16h37 ",
-                  "departureStation": " PARIS GARE DE LYON ",
-                  "arrivalTime": " 19h17 ",
-                  "arrivalStation": " AVIGNON TGV ",
-                  "type": " TGV ",
-                  "number": " 6121 "
+                  "departureTime": "16h37",
+                  "departureStation": "PARIS GARE DE LYON",
+                  "arrivalTime": "19h17",
+                  "arrivalStation": "AVIGNON TGV",
+                  "type": "TGV",
+                  "number": "6121"
                 }
               ]
             },
             {
-              "type": " Retour ",
+              "type": "Retour",
               "date": "Sun Sep 18 2016 00:00:00 GMT+0200",
               "trains": [
                 {
-                  "departureTime": " 15h42 ",
-                  "departureStation": " AVIGNON TGV ",
-                  "arrivalTime": " 18h30 ",
-                  "arrivalStation": " PARIS GARE DE LYON ",
-                  "type": " TGV ",
-                  "number": " 6122 "
+                  "departureTime": "15h42",
+                  "departureStation": "AVIGNON TGV",
+                  "arrivalTime": "18h30",
+                  "arrivalStation": "PARIS GARE DE LYON",
+                  "type": "TGV",
+                  "number": "6122"
                 }
               ],
               "passengers": [
@@ -79,17 +79,23 @@
               ]
             }
           ],
-          "price": " 768,50 € "
+          "price": 768.5
         },
-        "code": " SNIKXP ",
-        "name": " dupont "
+        "code": "SNIKXP",
+        "name": "dupont"
       }
     ],
     "custom": {
       "prices": [
-        " 315,50 € ",
-        " 378,00 € ",
-        " 75,00 €   "
+        {
+          "value": 315.5
+        },
+        {
+          "value": 378
+        },
+        {
+          "value": 75
+        }
       ]
     }
   },
