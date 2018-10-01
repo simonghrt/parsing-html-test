@@ -7,7 +7,7 @@
  */
 
 const assert = require('assert');
-const {readJsonFile} = require('./file.js');
+const {readJsonFile} = require('../src/file.js');
 
 describe('Verification same JSON file', function() {
   let original = {};

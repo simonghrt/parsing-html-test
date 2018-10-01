@@ -4,8 +4,8 @@
   "description": "Le fichier test.html correspond à des billets de train, et le fichier test-result.json est le résultat attendu. L'objectif est de réaliser un petit programme permettant de générer test-result.json:",
   "main": "main.js",
   "scripts": {
-    "start": "node main.js",
-    "test": "mocha test.js"
+    "start": "node src/main.js",
+    "test": "mocha test/test.js"
   },
   "author": "",
   "license": "ISC",
