@@ -22,6 +22,18 @@ function readHtmlFile(path) {
   return cheerio.load(content);
 }
 
+
+/**
+ *  Reads JSON file
+ *  @param{string} Path of the JSON file to read
+ *  @returns{object} JSON object
+ */
+function readJsonFile(path) {
+  let file = fs.readFileSync(path, 'utf8');
+  return JSON.parse(file);
+}
+
+
 /**
  *  Writes the JSON file
  *  @param{object} The JSON content to write
@@ -33,4 +45,5 @@ function writeJsonFile(content, path) {
 }
 
 module.exports.readHtmlFile = readHtmlFile;
+module.exports.readJsonFile = readJsonFile;
 module.exports.writeJsonFile = writeJsonFile;
